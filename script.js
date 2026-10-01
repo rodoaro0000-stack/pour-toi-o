@@ -277,7 +277,7 @@
      5. LE TEXTE DE LA LETTRE
      ---------------------------------------------------------- */
   const LETTER = [
-    { cls: 'salute', parts: [{ t: 'Mon Bubu ❤️' }] },
+    { cls: 'salut', parts: [{ t: 'Ma Bubu ❤️' }] },
     { parts: [{ t: "Aujourd'hui est un jour un peu plus spécial que les autres, parce que c'est le jour où une personne merveilleuse est née." }] },
     { parts: [{ t: "Je voulais simplement te rappeler à quel point tu comptes pour moi. Ta présence apporte quelque chose de doux et de précieux à mes journées, et chaque petit moment partagé avec toi a une place particulière dans mon cœur." }] },
     { parts: [
@@ -288,7 +288,7 @@
     { parts: [{ t: 'Tu es une personne qui mérite énormément de bonheur, de douceur et de belles choses.' }] },
     { parts: [{ t: 'Alors pour ton anniversaire, je veux simplement te souhaiter une année remplie de sourires, de beaux souvenirs, de rêves qui se réalisent et de moments qui te rendent vraiment heureux/heureuse.' }] },
     { parts: [{ t: "Et surtout, j'espère pouvoir continuer à partager encore beaucoup de ces moments avec toi." }] },
-    { cls: 'closing', parts: [{ t: 'Joyeux anniversaire mon Bubu. ❤️' }] },
+    { cls: 'closing', parts: [{ t: 'Joyeux anniversaire ma Bubu. ❤️' }] },
     { cls: 'closing', parts: [{ t: 'Je t\'aime. Aujourd\'hui, demain et encore longtemps. 💕' }] }
   ];
 
