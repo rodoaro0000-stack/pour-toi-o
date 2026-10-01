@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Une petite surprise romantique et kawaii pour Bubu." />
+  <meta name="theme-color" content="#ffe5ec" />
+  <title>Une petite surprise pour toi 💌</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!--
+  ============================================================
+  💌 CARTE D'ANNIVERSAIRE ROMANTIQUE KAWAII POUR BUBU
+  ------------------------------------------------------------
+  Fichiers : index.html / style.css / script.js
+  Tout est créé en HTML + CSS + JavaScript vanilla.
+  Aucune dépendance, aucune image externe.
+  ============================================================
+-->
+<body class="state-idle">
+
+  <!-- ==================== FOND DÉCORATIF ==================== -->
+  <div class="bg" aria-hidden="true">
+    <!-- Dégradé pastel animé (blobs flous) -->
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+
+    <!-- Couches générées par JavaScript -->
+    <div class="bg-layer" id="starsLayer"></div>   <!-- étoiles scintillantes -->
+    <div class="bg-layer" id="sparkLayer"></div>   <!-- sparkles / particules lumineuses -->
+    <div class="bg-layer" id="floatLayer"></div>   <!-- petits cœurs flottants -->
+  </div>
+
+  <!-- ==================== SCÈNE PRINCIPALE ==================== -->
+  <main class="stage">
+
+    <!-- ---------- 1. ENVELOPPE ---------- -->
+    <section class="scene scene--envelope" id="sceneEnvelope">
+
+      <!-- Mini cœurs qui tournent autour de l'enveloppe (état initial) -->
+      <div class="orbit-hearts" aria-hidden="true">
+        <span class="orbit-ring orbit-ring--1"><i class="hrt hrt--sm"></i></span>
+        <span class="orbit-ring orbit-ring--2"><i class="hrt hrt--sm hrt--violet"></i></span>
+        <span class="orbit-ring orbit-ring--3"><i class="hrt hrt--sm"></i></span>
+      </div>
+
+      <div class="env-perspective">
+        <div class="envelope" id="envelope" role="button" tabindex="0"
+             aria-label="Ouvrir l’enveloppe surprise">
+
+          <!-- Fond de l'enveloppe -->
+          <div class="env-back"></div>
+
+          <!-- Lumière douce qui sort de l'intérieur -->
+          <div class="env-glow"></div>
+
+          <!-- Contenu qui glisse hors de l'enveloppe : feuille + personnage -->
+          <div class="env-content" id="envContent">
+
+            <!-- Feuille / lettre en papier -->
+            <div class="sheet">
+              <span class="sheet-line"></span>
+              <span class="sheet-line"></span>
+              <span class="sheet-line"></span>
+              <i class="hrt hrt--xs sheet-heart"></i>
+            </div>
+
+            <!-- Petit personnage chibi kawaii -->
+            <div class="chibi" id="chibi">
+              <div class="chibi-jump">
+                <div class="chibi-breathe">
+
+                  <!-- Ombre au sol -->
+                  <span class="chibi-shadow"></span>
+
+                  <!-- Jambes -->
+                  <span class="chibi-limb leg leg--l"></span>
+                  <span class="chibi-limb leg leg--r"></span>
+
+                  <!-- Corps -->
+                  <span class="chibi-torso"></span>
+                  <span class="chibi-belly"></span>
+
+                  <!-- Le gros cœur tenu à deux mains -->
+                  <span class="heart-hold" id="heartHold">
+                    <i class="hrt hrt--big"></i>
+                    <i class="heart-shine"></i>
+                  </span>
+
+                  <!-- Bras (par-dessus le cœur, comme pour le serrer) -->
+                  <span class="chibi-limb arm arm--l"></span>
+                  <span class="chibi-limb arm arm--r"></span>
+
+                  <!-- Tête -->
+                  <span class="chibi-head">
+                    <span class="ear ear--l"></span>
+                    <span class="ear ear--r"></span>
+                    <span class="tuft"></span>
+                    <span class="eye eye--l"><i></i></span>
+                    <span class="eye eye--r"><i></i></span>
+                    <span class="blush blush--l"></span>
+                    <span class="blush blush--r"></span>
+                    <span class="mouth"></span>
+                  </span>
+
+                  <!-- Petits cœurs qui tournent autour du personnage -->
+                  <span class="chibi-ring chibi-ring--1"><i class="hrt hrt--xs"></i></span>
+                  <span class="chibi-ring chibi-ring--2"><i class="hrt hrt--xs hrt--violet"></i></span>
+                  <span class="chibi-ring chibi-ring--3"><i class="hrt hrt--xs"></i></span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Avant de l'enveloppe (3 panneaux triangulaires) -->
+          <div class="env-front env-front--left"></div>
+          <div class="env-front env-front--right"></div>
+          <div class="env-front env-front--bottom"></div>
+
+          <!-- Rabat 3D -->
+          <div class="env-flap"></div>
+
+          <!-- Cachet de cire avec cœur -->
+          <div class="env-seal"><i class="hrt hrt--sm"></i></div>
+        </div>
+      </div>
+
+      <!-- Textes de l'écran initial -->
+      <div class="intro" id="intro">
+        <p class="intro-title">Une petite surprise pour toi 💌</p>
+        <p class="intro-sub">Clique sur l'enveloppe<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+      </div>
+    </section>
+
+    <!-- ---------- 2. MESSAGE D'ANNIVERSAIRE ---------- -->
+    <section class="scene scene--message" id="sceneMessage">
+      <div class="msg-burst" id="msgBurst" aria-hidden="true"></div>
+      <h1 class="msg-title">
+        Joyeux anniversaire <span class="msg-name">Bubu</span> <span class="msg-heart">❤️</span>
+      </h1>
+      <p class="msg-love">Je t'aime ❤️</p>
+    </section>
+
+    <!-- ---------- 3. LETTRE ROMANTIQUE ---------- -->
+    <section class="scene scene--letter" id="sceneLetter">
+      <div class="letter-card" id="letterCard">
+        <span class="letter-pin"><i class="hrt hrt--sm"></i></span>
+        <div class="letter-body" id="letterBody">
+          <!-- Le texte est écrit progressivement par script.js -->
+        </div>
+        <p class="letter-hint" id="letterHint">✨ La lettre s'écrit pour toi…</p>
+      </div>
+    </section>
+
+    <!-- ---------- 4. FINALE ---------- -->
+    <section class="scene scene--finale" id="sceneFinale">
+      <div class="finale-hearts" aria-hidden="true">
+        <span><i>💕</i></span><span><i>❤️</i></span><span><i>💕</i></span><span><i>❤️</i></span><span><i>💕</i></span>
+      </div>
+      <p class="finale-msg">Je t'aime Bubu ❤️</p>
+    </section>
+  </main>
+
+  <!-- ==================== MUSIQUE ==================== -->
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="Until I Found You.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-toggle" id="musicToggle" type="button"
+          aria-label="Mettre la musique en pause" aria-pressed="true">
+    <span class="music-icon" aria-hidden="true">♫</span>
+    <span class="music-label">Musique</span>
+  </button>
+
+  <!-- ==================== BOUTON REJOUER ==================== -->
+  <button class="replay" id="replay" type="button">Rejouer la surprise 💌</button>
+
+  <!-- ==================== CALQUE D'EFFETS ==================== -->
+  <!-- Cœurs / étincelles lancés au clic et pendant la finale -->
+  <div class="fx" id="fxLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
